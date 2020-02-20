@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Championship App{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('css/homepage.css') }}">
+    {% endblock %}
+</head>
+<body>
+<nav id="navigation">
+    <div class="container">
+        <ul class="navlinks">
+            {% if app.user %}
+                <li><a href="/homepage">Home</a></li>
+                {% if app.user.roles|first == "user" %}
+                    {% if app.user.profile %}
+                        <li><a href="/profile/{{ app.user.profile.id }}">Profile</a></li>
+                    {% endif %}
+
+                    <li><a href="/competition">Competitions</a></li>
+                {% else %}
+                    <li><a href="/competition/new">Create Competition</a></li>
+                    <li><a href="/category/new">Create Category</a></li>
+
+                {% endif %}
+
+
+                <li><a href="/logout">Log out</a></li>
+
+
+            {% else %}
+                <li><a href="/login">Log in</a></li>
+                <li><a href="/register">Register</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+{% block body %}{% endblock %}
+{% block javascripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+    {% block stylesheets %}
+        {{ parent() }}
+        <link rel="stylesheet" href="{{ asset('css/homepage.css') }}">
+    {% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('js/homepage.js') }}"></script>
+        {% endblock %}
+
+{% block body %}
+    <header id="heading">
+        <div class="container text-center">
+            <h1>Choose Your Championship!</h1>
+            <h4>Find the right championship for you and be the champion!</h4>
+
+            <p><a href="/competition" class="btn btn-large btn-inverse">Check out our championships</a></p>
+        </div>
+    </header>
+    <img src="/images/karate.jpg">
+    <img src="/images/tenis.jpg">
+    <img src="/images/footbal.jpg">
+
+
+    <div id="footer">
+        <div class="container">
+            <p><a href="http://www.unitbv.ro/">UNITBV</a></p>
+        </div>
+    </div>
+    </body>{% endblock %}
